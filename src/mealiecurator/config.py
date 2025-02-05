@@ -2,11 +2,9 @@
 
 from pathlib import Path
 
-from appdirs import user_config_dir
 from configobj import ConfigObj
 from validate import Validator
 
-CONFIG_DIR = Path(user_config_dir("mealiecurator", appauthor=False))
 CONFIG_SPEC = """
 mealie_url = string(default="")
 """.splitlines()
