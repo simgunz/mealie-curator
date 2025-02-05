@@ -28,3 +28,15 @@ def test_get_config_default_mealie_url(tmp_path: Path):
     config = get_config(config_path)
 
     assert config["mealie_url"] == ""
+
+
+def test_get_config_set_mealie_url(tmp_path: Path):
+    config_path = tmp_path / "config" / "configrc"
+    mealie_url = "http://mealie.example.com"
+
+    config = get_config(config_path)
+    config["mealie_url"] = mealie_url
+    config.write()
+
+    new_config = get_config(config_path)
+    assert new_config["mealie_url"] == mealie_url
