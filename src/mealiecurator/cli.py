@@ -56,3 +56,7 @@ def config(
     if value is None:
         config_value = config[key]
         typer.echo(config_value)
+    else:
+        config[key] = value
+        config.write()
+        typer.echo(f"Set {key} to {value}")
