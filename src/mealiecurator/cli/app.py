@@ -16,7 +16,11 @@ DEFAULT_CONFIG_PATH = CONFIG_DIR_PATH / "mealiecuratorrc"
 
 CallbackContext: TypeAlias = typer.Context
 
-app = typer.Typer()
+app = typer.Typer(
+    no_args_is_help=True,
+    rich_markup_mode="rich",
+    context_settings={"help_option_names": ["-h", "--help"]},
+)
 
 
 def version_callback(value: bool) -> None:
