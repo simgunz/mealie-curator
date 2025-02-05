@@ -8,6 +8,7 @@ import typer
 from typing_extensions import TypeAlias
 
 from mealiecurator import __version__, logs
+from mealiecurator.cli.foods import foods_cmd
 from mealiecurator.config import get_config
 from mealiecurator.logs import LogLevel
 
@@ -16,7 +17,12 @@ DEFAULT_CONFIG_PATH = CONFIG_DIR_PATH / "mealiecuratorrc"
 
 CallbackContext: TypeAlias = typer.Context
 
-app = typer.Typer()
+app = typer.Typer(
+    no_args_is_help=True,
+    rich_markup_mode="rich",
+    context_settings={"help_option_names": ["-h", "--help"]},
+)
+app.add_typer(foods_cmd, name="foods")
 
 
 def version_callback(value: bool) -> None:
