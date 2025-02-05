@@ -35,7 +35,8 @@ def to_lower_case(ctx: typer.Context) -> None:
                 continue
             food["name"] = original_name.lower()
             try:
-                client.update_food(food["id"], food)
+                if not ctx.obj["dry_run"]:
+                    client.update_food(food["id"], food)
                 processed += 1
             except Exception as e:
                 typer.echo(f"Error updating food {original_name}: {e}")
