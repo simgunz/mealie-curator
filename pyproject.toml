@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mealie-curator"
-version = "0.0.0"
+version = "0.1.0"
 description = "Command-line toolkit for maintaining and organizing your Mealie recipe database"
 authors = [
   "Simone Gaiarin <simgunz@gmail.com>"
