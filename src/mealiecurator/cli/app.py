@@ -32,6 +32,10 @@ def cli(
         Optional[Path],
         typer.Option(help="Path to the configuration file"),
     ] = DEFAULT_CONFIG_PATH,
+    dry_run: Annotated[
+        bool,
+        typer.Option("-n", "--dry-run", help="Do not make any changes."),
+    ] = False,
     log_level: Annotated[
         Optional[LogLevel],
         typer.Option(
@@ -54,6 +58,7 @@ def cli(
     """Common options and main CLI entrypoint for mealiecurator."""
     ctx.ensure_object(dict)
     ctx.obj["config_path"] = config_path
+    ctx.obj["dry_run"] = dry_run
     logs.set_level(log_level.value)
 
 
