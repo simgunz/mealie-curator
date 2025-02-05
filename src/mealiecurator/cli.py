@@ -1,10 +1,17 @@
 """mealiecurator CLI."""
+
+from pathlib import Path
 from typing import Annotated, Optional
 
+import appdirs
 import typer
 
 from mealiecurator import __version__, logs
+from mealiecurator.config import get_config
 from mealiecurator.logs import LogLevel
+
+CONFIG_DIR_PATH = Path(appdirs.user_config_dir("mealiecurator", appauthor=False))
+DEFAULT_CONFIG_PATH = CONFIG_DIR_PATH / "mealiecuratorrc"
 
 app = typer.Typer()
 
@@ -38,3 +45,23 @@ def cli(
 ) -> None:
     """Engage with mealiecurator using this CLI."""
     logs.set_level(log_level.value)
+
+
+@app.command()
+def config(
+    key: Annotated[str, typer.Argument(help="Configuration key to get/set")],
+    value: Annotated[Optional[str], typer.Argument(help="Value to set")] = None,
+    config_path: Annotated[
+        Optional[Path],
+        typer.Option(help="Path to the configuration file"),
+    ] = DEFAULT_CONFIG_PATH,
+) -> None:
+    """Get or set a configuration value."""
+    config = get_config(config_path)
+    if value is None:
+        config_value = config[key]
+        typer.echo(config_value)
+    else:
+        config[key] = value
+        config.write()
+        typer.echo(f"Set {key} to {value}")
