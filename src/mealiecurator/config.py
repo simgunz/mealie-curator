@@ -7,6 +7,7 @@ from validate import Validator
 
 CONFIG_SPEC = """
 mealie_url = string(default="")
+mealie_api_token = string(default="")
 """.splitlines()
 
 
