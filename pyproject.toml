@@ -12,6 +12,7 @@ packages = [{include = "mealiecurator", from = "src"}]
 python = "^3.12"
 typer = "^0.13.0"
 appdirs = "^1.4.4"
+configobj = "^5.0.9"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.2"
