@@ -37,7 +37,7 @@ requires = ["poetry>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-mealiecurator = "mealiecurator.cli:app"
+mealiecurator = "mealiecurator.cli.app:app"
 
 [tool.black]
 line-length = 88
