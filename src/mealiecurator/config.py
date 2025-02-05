@@ -8,7 +8,7 @@ from validate import Validator
 
 CONFIG_DIR = Path(user_config_dir("mealiecurator", appauthor=False))
 CONFIG_SPEC = """
-[DEFAULT]
+mealie_url = string(default="")
 """.splitlines()
 
 
