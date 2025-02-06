@@ -21,4 +21,4 @@ python_version: '3.12'
 testing_framework: pytest
 use_flake8_strict_plugins: true
 use_jupyter_notebooks: false
-version: 0.1.0
+version: 0.1.1
