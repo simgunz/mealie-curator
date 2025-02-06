@@ -17,7 +17,14 @@ class MealieClient:
         """Get all foods from Mealie."""
         url = f"{self.base_url}/api/foods"
         with httpx.Client() as client:
-            response = client.get(url, headers=self.headers)
+            response = client.get(
+                url,
+                headers=self.headers,
+                params={
+                    "page": 1,
+                    "perPage": 10000,
+                },
+            )
             response.raise_for_status()
             return response.json()["items"]
 
